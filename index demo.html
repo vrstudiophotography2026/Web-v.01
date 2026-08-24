@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J. ALISSA | Culinary Photography</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS VARIABLES & THEME --- */
+        :root {
+            --primary-font: 'Playfair Display', serif;
+            --secondary-font: 'Montserrat', sans-serif;
+            --text-dark: #222;
+            --text-light: #fff;
+            --accent-color: #666;
+            --bg-light: #fafafa;
+            --bg-dark: #111;
+            --header-height: 80px;
+        }
+
+        /* --- BASE STYLES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--secondary-font); color: var(--text-dark);
+            background-color: var(--bg-light); line-height: 1.6; overflow-x: hidden;
+        }
+        section { scroll-margin-top: var(--header-height); padding: 100px 8%; }
+
+        /* --- HEADER NAVIGATION --- */
+        header {
+            position: fixed; top: 0; width: 100%; height: var(--header-height);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 8%; background-color: rgba(250, 250, 250, 0.95);
+            backdrop-filter: blur(10px); z-index: 1000; transition: box-shadow 0.3s ease;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        header.scrolled { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); }
+        .logo { font-family: var(--primary-font); font-size: 1.5rem; letter-spacing: 4px; color: var(--text-dark); text-decoration: none; font-weight: 600; }
+        nav ul { display: flex; list-style: none; gap: 2.5rem; }
+        nav a {
+            text-decoration: none; color: var(--accent-color); font-size: 0.85rem;
+            font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase;
+            position: relative; padding-bottom: 5px; transition: color 0.3s ease;
+        }
+        nav a::after {
+            content: ''; position: absolute; width: 0; height: 1px; bottom: 0; left: 0;
+            background-color: var(--text-dark); transition: width 0.3s ease;
+        }
+        nav a:hover, nav a.active { color: var(--text-dark); }
+        nav a:hover::after, nav a.active::after { width: 100%; }
+
+        /* --- HERO SECTION --- */
+        #home {
+            position: relative; height: 100vh; display: flex; justify-content: center;
+            align-items: center; text-align: center; padding: 0; overflow: hidden; scroll-margin-top: 0;
+        }
+        .hero-bg {
+            position: absolute; top: -10%; left: 0; width: 100%; height: 120%;
+            background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover; background-position: center; z-index: -2; will-change: transform;
+        }
+        .hero-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)); z-index: -1;
+        }
+        .hero-content {
+            z-index: 1; padding: 0 20px; opacity: 0; transform: translateY(30px);
+            animation: fadeUpIn 1s ease forwards 0.5s;
+        }
+        .hero h1 {
+            font-family: var(--primary-font); font-size: clamp(2.5rem, 5vw, 5rem);
+            color: var(--text-light); font-weight: 400; letter-spacing: 4px; margin-bottom: 1rem; text-transform: uppercase;
+        }
+        .hero p { font-size: 1.1rem; color: #ccc; letter-spacing: 8px; margin-bottom: 3rem; text-transform: uppercase; }
+        
+        .btn-light {
+            display: inline-block; padding: 1rem 3rem; border: 1px solid rgba(255, 255, 255, 0.6);
+            color: var(--text-light); text-decoration: none; font-size: 0.9rem;
+            letter-spacing: 2px; text-transform: uppercase; transition: all 0.3s ease;
+        }
+        .btn-light:hover { background: var(--text-light); color: var(--text-dark); }
+
+        /* --- COMMON HEADERS --- */
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-family: var(--primary-font); font-size: 2.5rem; font-weight: 400; letter-spacing: 2px; margin-bottom: 10px; }
+        .section-header p { font-size: 0.9rem; color: var(--accent-color); letter-spacing: 4px; text-transform: uppercase; }
+
+        /* --- PORTFOLIO GALLERY --- */
+        #portfolio { background-color: var(--bg-light); }
+        .gallery-grid {
+            display: grid; 
+            /* Automatically fits as many 300px columns as possible */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 20px; 
+        }
+        .gallery-item { position: relative; overflow: hidden; aspect-ratio: 4/5; cursor: pointer; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
+        .gallery-item:hover img { transform: scale(1.08); }
+        .gallery-overlay {
+            position: absolute; bottom: 0; left: 0; width: 100%; padding: 30px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            opacity: 0; transition: opacity 0.4s ease;
+        }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-overlay h3 { font-family: var(--primary-font); color: var(--text-light); font-weight: 400; font-size: 1.2rem; letter-spacing: 1px; }
+
+        /* --- ABOUT --- */
+        #about { background-color: #fff; display: flex; align-items: center; gap: 60px; }
+        .about-img { flex: 1; }
+        .about-img img { width: 100%; height: auto; box-shadow: 20px 20px 0px rgba(0,0,0,0.05); }
+        .about-text { flex: 1; }
+        .about-text h2 { font-family: var(--primary-font); font-size: 2.5rem; margin-bottom: 20px; font-weight: 400; }
+        .about-text p { margin-bottom: 20px; color: var(--accent-color); }
+
+        /* --- CONTACT --- */
+        #contact { background-color: var(--bg-dark); color: var(--text-light); text-align: center; }
+        #contact .section-header p { color: #888; }
+        .contact-content { max-width: 600px; margin: 0 auto; }
+        .contact-email {
+            font-family: var(--primary-font); font-size: 2rem; color: var(--text-light); text-decoration: none;
+            display: inline-block; margin-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.3);
+            padding-bottom: 5px; transition: border-color 0.3s;
+        }
+        .contact-email:hover { border-color: var(--text-light); }
+
+        footer { background-color: #0a0a0a; color: #555; text-align: center; padding: 30px 8%; font-size: 0.85rem; letter-spacing: 1px; }
+
+        /* --- ANIMATIONS & RESPONSIVE --- */
+        @keyframes fadeUpIn { to { opacity: 1; transform: translateY(0); } }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            header { flex-direction: column; justify-content: center; height: auto; padding: 1.5rem; }
+            nav ul { margin-top: 1rem; flex-wrap: wrap; justify-content: center; gap: 1.2rem; }
+            #about { flex-direction: column; }
+            section { padding: 80px 5%; scroll-margin-top: 120px; }
+            .hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="main-header">
+        <a href="#home" class="logo">J. ALISSA</a>
+        <nav>
+            <ul>
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <div class="hero-bg" id="parallax-bg"></div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1>CRAFTING CULINARY NARRATIVES</h1>
+                <p>Through Photography</p>
+                <a href="#portfolio" class="btn-light">VIEW COLLECTION</a>
+            </div>
+        </section>
+
+        <section id="portfolio" class="reveal">
+            <div class="section-header">
+                <h2>The Collection</h2>
+                <p>Selected Works</p>
+            </div>
+            
+            <div id="dynamic-gallery" class="gallery-grid"></div>
+            
+        </section>
+
+        <section id="about" class="reveal">
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1600565152246-13a863f6406e?q=80&w=1964&auto=format&fit=crop" alt="Photographer">
+            </div>
+            <div class="about-text">
+                <p style="text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; color: #999;">The Photographer</p>
+                <h2>Behind the Lens</h2>
+                <p>Hello, I'm J. Alissa. I specialize in commercial food, still life, and lifestyle photography. My focus is on crafting compelling culinary narratives, transforming simple ingredients into rich visual stories.</p>
+                <p>I utilize a mix of natural light and studio strobes to create a moody, textured aesthetic designed to make you feel the warmth and taste the flavors through the screen.</p>
+            </div>
+        </section>
+
+        <section id="contact" class="reveal">
+            <div class="section-header">
+                <h2 style="color: var(--text-light);">Let's Create Together</h2>
+                <p>Inquiries & Bookings</p>
+            </div>
+            <div class="contact-content">
+                <p style="margin-bottom: 20px; color: #aaa;">For collaborations, commissions, or just to say hello, reach out via email.</p>
+                <a href="mailto:hello@jalissa.com" class="contact-email">hello@jalissa.com</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 J. Alissa Photography. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // ====================================================================
+            // 1. ADD YOUR IMAGES HERE
+            // List the exact filenames of the images inside your "image" folder.
+            // Add or remove lines as needed.
+            // ====================================================================
+            const portfolioImages = [
+                { filename: 'photo1.jpg', title: 'Editorial Dessert' },
+                { filename: 'photo2.jpg', title: 'Commercial Plating' },
+                { filename: 'photo3.jpg', title: 'Moody Still Life' },
+                { filename: 'photo4.jpg', title: 'Fresh Produce' },
+                { filename: 'photo5.jpg', title: 'Action Shot' },
+                { filename: 'photo6.jpg', title: 'Rustic Styling' }
+            ];
+
+            // DO NOT EDIT BELOW THIS LINE unless you know Javascript
+            const galleryContainer = document.getElementById('dynamic-gallery');
+
+            // Automatically generate HTML for each image
+            if (portfolioImages.length === 0) {
+                galleryContainer.innerHTML = "<p style='grid-column: 1/-1; text-align: center; color: #666;'>No images found. Please add images to the Javascript array.</p>";
+            } else {
+                portfolioImages.forEach(img => {
+                    const item = document.createElement('div');
+                    item.className = 'gallery-item';
+                    item.innerHTML = `
+                        <img src="image/${img.filename}" alt="${img.title}" onerror="this.src='https://via.placeholder.com/400x500?text=Image+Not+Found'">
+                        <div class="gallery-overlay"><h3>${img.title}</h3></div>
+                    `;
+                    galleryContainer.appendChild(item);
+                });
+            }
+
+            // --- UI Interaction Logic (Scroll Spy, Header, Parallax) ---
+            const header = document.getElementById('main-header');
+            const parallaxBg = document.getElementById('parallax-bg');
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            window.addEventListener('scroll', () => {
+                let currentScroll = window.scrollY;
+                if (currentScroll > 50) header.classList.add('scrolled');
+                else header.classList.remove('scrolled');
+                
+                if (parallaxBg) parallaxBg.style.transform = `translateY(${currentScroll * 0.4}px)`;
+            });
+
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => link.classList.remove('active'));
+                        const id = entry.target.getAttribute('id');
+                        const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
+                        if(activeLink) activeLink.classList.add('active');
+                    }
+                });
+            }, { root: null, rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+            sections.forEach(sec => sectionObserver.observe(sec));
+
+            const revealObserver = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        obs.unobserve(entry.target); 
+                    }
+                });
+            }, { threshold: 0.15 });
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+        });
+    </script>
+</body>
+</html>

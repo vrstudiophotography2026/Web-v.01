@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VR Photography Animation</title>
+    <style>
+        /* Base Theme Variables */
+        :root {
+            --text-main: #ffffff;
+            --text-muted: #a1a1aa;
+            --accent-glow: rgba(168, 85, 247, 0.5); /* Subtle purple cyber accent */
+            --bg-color: #09090b; /* Deep dark mode background */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; /* Prevents scrollbars during scale animations */
+        }
+
+        /* Flex container keeps everything aligned beautifully */
+        .animation-stage {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .vr-text {
+            font-size: 7rem;
+            font-weight: 800;
+            letter-spacing: -2px;
+            
+            /* Initial State: Zoomed in and hidden */
+            transform: scale(4);
+            opacity: 0;
+            text-shadow: 0 0 0px transparent;
+            
+            /* Premium easing curve for a natural, high-end feel */
+            transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+                        opacity 0.8s ease-out,
+                        text-shadow 1.5s ease 0.5s;
+            z-index: 2;
+        }
+
+        .vr-text.zoomed-out {
+            /* Step 1: Snap to normal size, visible in center */
+            transform: scale(1);
+            opacity: 1;
+            /* Subtle neon/glass glow activates after zoom */
+            text-shadow: 0 0 25px var(--accent-glow);
+        }
+
+        .title-wrapper {
+            /* Initial State: Takes up 0 width, hiding the text inside */
+            max-width: 0;
+            opacity: 0;
+            overflow: hidden;
+            
+            /* The width expansion pushes the VR text naturally to the left */
+            transition: max-width 1s cubic-bezier(0.25, 1, 0.5, 1),
+                        opacity 0.8s ease-in 0.2s;
+        }
+
+        .title-wrapper.revealed {
+            /* Step 2: Expand container to reveal text */
+            max-width: 800px; 
+            opacity: 1;
+        }
+
+        .title-text {
+            font-size: 4rem;
+            font-weight: 300;
+            white-space: nowrap;
+            padding-left: 25px;
+            
+            /* Modern gradient text effect */
+            background: linear-gradient(90deg, var(--text-main), var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="animation-stage">
+        <div class="vr-text" id="vr">VR</div>
+        <div class="title-wrapper" id="titleWrap">
+            <div class="title-text">The Art of Photography</div>
+        </div>
+    </div>
+
+    <script>
+        // Execute animation sequence once the DOM is fully loaded
+        document.addEventListener("DOMContentLoaded", () => {
+            const vrElement = document.getElementById('vr');
+            const titleWrap = document.getElementById('titleWrap');
+
+            // Phase 1: Zoom out the 'VR' text after a brief initial pause
+            setTimeout(() => {
+                vrElement.classList.add('zoomed-out');
+            }, 300);
+
+            // Phase 2: Expand the wrapper to slide the text out smoothly
+            // Timed to start exactly as the zoom-out finishes
+            setTimeout(() => {
+                titleWrap.classList.add('revealed');
+            }, 1500); 
+        });
+    </script>
+</body>
+</html>

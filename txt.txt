@@ -1,0 +1,9 @@
+<div class="slide active" style="background-image: url('1.jpeg');"></div>
+            <div class="slide" style="background-image: url('2.jpeg');"></div>
+            <div class="slide" style="background-image: url('3.jpeg');"></div>
+            <div class="slide" style="background-image: url('4.jpeg');"></div>
+            <div class="slide" style="background-image: url('5.jpeg');"></div>
+            <div class="slide" style="background-image: url('6.jpeg');"></div>
+            <div class="slide" style="background-image: url('7.jpeg');"></div>
+            <div class="slide" style="background-image: url('8.jpeg');"></div>
+            <div class="overlay"></div>

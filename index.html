@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VR Photography | Creative Portfolio</title>
+
+    <!-- Premium Font Pairing: Playfair Display (Headings) & Montserrat (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="locked">
+
+    <!-- Elegant White Editorial Intro Screen -->
+    <div id="intro-loader">
+        <div class="intro-content">
+            <span class="intro-letter intro-v">V</span>
+            <span class="intro-letter intro-r">R</span>
+            <span class="intro-word">PHOTOGRAPHY</span>
+        </div>
+        <button type="button" id="introSkip" class="intro-skip">Skip</button>
+    </div>
+
+    <!-- Main Content Wrapper -->
+    <div id="main-wrapper">
+        <header id="navbar">
+            <div class="logo">
+                <span class="vr">VR</span>
+                <span class="text">PHOTOGRAPHY</span>
+            </div>
+
+            <!-- Hamburger Icon for Mobile -->
+            <div class="menu-toggle" id="mobile-menu" role="button" aria-label="Toggle menu" aria-expanded="false" tabindex="0">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#story" class="nav-link">Story</a></li>
+                <li><a href="#portfolio" class="nav-link">Profile</a></li>
+                <li><a href="#works" class="nav-link">Works</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </header>
+
+        <section id="home" class="hero">
+            <div class="hero-slider" id="heroSlider">
+                <div class="slide active" style="background-image: url('6.jpeg');"></div>
+                <div class="slide" style="background-image: url('2.jpeg');"></div>
+                <div class="slide" style="background-image: url('3.jpeg');"></div>
+                <div class="slide" style="background-image: url('5.jpeg');"></div>
+                <div class="slide" style="background-image: url('1.jpeg');"></div>
+                <div class="slide" style="background-image: url('7.jpeg');"></div>
+                <div class="overlay"></div>
+            </div>
+            <div class="hero-content">
+                <h1 class="fade-in-up stagger-1">The Art of Emotion</h1>
+                <p class="fade-in-up stagger-2">Capturing raw moments, creating timeless visual poetry.</p>
+                <div class="fade-in-up stagger-3">
+                    <a href="#works" class="btn">Explore Gallery</a>
+                </div>
+            </div>
+            <a href="#story" class="scroll-cue fade-in-up stagger-4" aria-label="Scroll down">
+                <span class="scroll-cue-line"></span>
+                <span class="scroll-cue-label">Scroll</span>
+            </a>
+        </section>
+
+        <section id="story" class="section bg-light">
+            <div class="container fade-in-up">
+                <h2 class="section-title">Behind the Lens</h2>
+
+                <div class="video-gallery-container">
+                    <div class="main-video-wrapper">
+                        <video id="main-video-player" controls poster="1.jpg">
+                            <source src="demo.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+
+                    <div class="video-playlist">
+                        <div class="vid-thumb active" data-video="video1.mp4" data-poster="1.jpg">
+                            <img src="1.jpg" alt="Cinematic Wedding Reel" onerror="this.src='https://via.placeholder.com/100x65?text=Video+1'">
+                            <div class="vid-info">
+                                <h5>Cinematic Wedding Reel</h5>
+                                <span>02:45</span>
+                            </div>
+                        </div>
+                        <div class="vid-thumb" data-video="video2.mp4" data-poster="2.jpg">
+                            <img src="2.jpg" alt="Commercial Fashion Shoot" onerror="this.src='1.jpg'">
+                            <div class="vid-info">
+                                <h5>Commercial Fashion Shoot</h5>
+                                <span>01:30</span>
+                            </div>
+                        </div>
+                        <div class="vid-thumb" data-video="video3.mp4" data-poster="poster3.jpg">
+                            <img src="poster3.jpg" alt="Maternity & Baby Magic" onerror="this.src='1.jpg'">
+                            <div class="vid-info">
+                                <h5>Maternity & Baby Magic</h5>
+                                <span>03:10</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="story-text text-center mt-5">
+                    <p>Photography and videography aren't just about pressing a shutter; it's about freezing a moment in time that tells a story words cannot express. Watch our journey and see how passion translates into visual poetry.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="section bg-dark">
+            <div class="container fade-in-up">
+                <div class="portfolio-profile">
+                    <h3>V.R. Lead Photographer</h3>
+                    <span class="title">Founder & Chief Visual Artist</span>
+
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <h4 data-count-to="10" data-suffix="+">0</h4>
+                            <p>Years Experience</p>
+                        </div>
+                        <div class="stat-box">
+                            <h4 data-count-to="850" data-suffix="+">0</h4>
+                            <p>Shoots Completed</p>
+                        </div>
+                        <div class="stat-box">
+                            <h4 data-count-to="15" data-suffix="+">0</h4>
+                            <p>Awards Won</p>
+                        </div>
+                    </div>
+
+                    <div class="services-wrapper">
+                        <h4>Specialized Services</h4>
+                        <div class="service-tags">
+                            <span>Portrait Photography</span>
+                            <span>Wedding & Pre-Wedding</span>
+                            <span>Baby Showers</span>
+                            <span>Commercial</span>
+                            <span>Videography</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="works" class="section bg-light">
+            <div class="container-fluid">
+                <h2 class="section-title fade-in-up">Selected Works</h2>
+                <p class="works-subtitle fade-in-up">A few favorites, in no particular order. Tap any frame to look closer.</p>
+
+                <!-- Static grid — every shoot shown, click any frame to view its full gallery modal -->
+                <div class="gallery-grid" id="galleryGrid">
+
+                    <figure class="gallery-item" data-category="wedding" tabindex="0">
+                        <img src="images/wedding.jpeg" alt="Golden Hour Romance – Wedding Shoot" loading="lazy" onerror="this.src='https://via.placeholder.com/600x800?text=Wedding+1'">
+                        <figcaption class="gallery-caption">
+                            <span class="cap-category">Wedding Shoot</span>
+                            <h4 class="cap-title">Golden Hour Romance</h4>
+                            <span class="cap-rule" aria-hidden="true"></span>
+                            <p class="cap-quote">&ldquo;Two hearts. One story. Captured forever.&rdquo;</p>
+                            <ul class="cap-features">
+                                <li>Every frame holds a lifetime of love</li>
+                                <li>Candid &middot; Traditional &middot; Cinematic</li>
+                            </ul>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="gallery-item" data-category="baby-shower" tabindex="0">
+                        <img src="images/baby shower.jpeg" alt="Welcome Little One – Baby Shower" loading="lazy" onerror="this.src='https://via.placeholder.com/600x800?text=Baby+Shower'">
+                        <figcaption class="gallery-caption">
+                            <span class="cap-category">Baby Shower</span>
+                            <h4 class="cap-title">Welcome Little One</h4>
+                            <span class="cap-rule" aria-hidden="true"></span>
+                            <p class="cap-quote">&ldquo;A tiny heartbeat, a lifetime of love.&rdquo;</p>
+                            <ul class="cap-features">
+                                <li>Celebrating a beautiful journey</li>
+                                <li>The glow of motherhood, beautifully framed</li>
+                            </ul>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="gallery-item" data-category="outdoor" tabindex="0">
+                        <img src="images/out door.jpeg" alt="Nature's Canvas – Out Door Shoot" loading="lazy" onerror="this.src='https://via.placeholder.com/600x800?text=Outdoor+1'">
+                        <figcaption class="gallery-caption">
+                            <span class="cap-category">Out Door</span>
+                            <h4 class="cap-title">Nature's Canvas</h4>
+                            <span class="cap-rule" aria-hidden="true"></span>
+                            <p class="cap-quote">&ldquo;Golden light. Open skies. Endless memories.&rdquo;</p>
+                            <ul class="cap-features">
+                                <li>Where nature becomes your backdrop</li>
+                                <li>Candid &middot; Outdoor &middot; Detail Shots</li>
+                            </ul>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="gallery-item" data-category="baby-shoot" tabindex="0">
+                        <img src="images/baby shoot.jpeg" alt="Little Milestones – Baby Shoot" loading="lazy" onerror="this.src='https://via.placeholder.com/600x800?text=Baby+Shoot'">
+                        <figcaption class="gallery-caption">
+                            <span class="cap-category">Baby Shoot</span>
+                            <h4 class="cap-title">Little Milestones</h4>
+                            <span class="cap-rule" aria-hidden="true"></span>
+                            <p class="cap-quote">&ldquo;Little moments&hellip; big memories.&rdquo;</p>
+                            <ul class="cap-features">
+                                <li>So small, so loved, so precious</li>
+                                <li>Creative Themes &middot; Studio &amp; Outdoor</li>
+                            </ul>
+                        </figcaption>
+                    </figure>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section bg-dark-alt">
+            <div class="container fade-in-up">
+                <div class="contact-wrapper">
+                    <h3>Let's Create Together</h3>
+                    <p>We are currently accepting bookings for the upcoming season. Reach out to us directly or fill out our quick booking form to secure your date.</p>
+
+                    <div class="contact-grid">
+                        <div class="contact-item">
+                            <span>Email</span>
+                            <a href="mailto:vrphotography34@gmail.com">vrphotography34@gmail.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <span>Phone / WhatsApp</span>
+                            <a href="tel:+919025430044">+91 90254 30044</a>
+                        </div>
+                        <div class="contact-item">
+                            <span>Instagram</span>
+                            <a href="#" target="_blank">@vr_photography</a>
+                        </div>
+                    </div>
+
+                    <div class="book-cta-container">
+                        <a href="https://forms.cloud.microsoft/r/83DisEQRfS" target="_blank" class="btn btn-solid">Fill out Booking Form</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 VR Photography. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Category Gallery Modal -->
+    <div id="categoryModal" class="category-modal" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="category-modal-header">
+            <h3 id="modalCategoryTitle">Category Gallery</h3>
+            <button type="button" class="category-modal-close" id="closeCategoryModal" aria-label="Close modal">&times;</button>
+        </div>
+        
+        <div class="category-modal-body">
+            <div id="modalLoader" class="modal-loader">Loading...</div>
+            <div class="category-gallery-grid" id="modalGalleryGrid">
+                <!-- Images dynamically injected here -->
+            </div>
+            <p id="modalEmptyState" class="modal-empty-state" style="display: none;">Images coming soon.</p>
+        </div>
+    </div>
+
+    <!-- Back to top -->
+    <button type="button" id="backToTop" class="back-to-top" aria-label="Back to top">&uarr;</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
