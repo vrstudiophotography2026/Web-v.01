@@ -10,7 +10,7 @@ const PORT = 3000;
 
 // --- 1. ADMIN CREDENTIALS ---
 const ADMIN_USER = "admin@vr";
-const ADMIN_PASS = "rajkumar@vr"; // Password updated here
+const ADMIN_PASS = "RojaRaj@1721"; // Password updated here
 
 // --- 2. MIDDLEWARE & SESSIONS ---
 app.use(cors());
